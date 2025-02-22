@@ -1,11 +1,11 @@
-/*import Signup from "./components/signup/Signup";
+import Signup from "./components/signup/Signup";
 import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Login from "./components/login/Login";*/
+import Login from "./components/login/Login";
 import TodoApp from "./components/todoapp/Todo";
 
 function App() {
-  /* const route = createBrowserRouter([
+   const route = createBrowserRouter ([
     {
       path: "/",
       element: <Signup />,
@@ -23,9 +23,8 @@ function App() {
     <div className="App">
       <RouterProvider router={route}></RouterProvider>
     </div>
-  );*/
+  );
 
-  return <TodoApp />
 
 }
 

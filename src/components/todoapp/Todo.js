@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import './todo.css';
 
 
@@ -99,12 +99,26 @@ function Todo() {
     setEditTodoList("");
   };
 
+  const switchTheme = (e) => {
+    if(e.target.checked) {
+      document.querySelector('body').setAttribute('dark-theme', 'dark')
+    } else {
+      document.querySelector('body').setAttribute('dark-theme', 'light')
+    }
+  }
+
+  
+
   return (
     <div className="Todo">
       <div className="page-header">
         <h1>Welcome Kairo!</h1>
         <div className="display">
           <h1>Kairo</h1>
+          <label class="switch">
+            <input type="checkbox" onChange={switchTheme}/>
+            <span class="slider round"></span>
+          </label>
         </div>
       </div>
       <h1>My To Do</h1>
