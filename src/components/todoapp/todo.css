@@ -1,0 +1,172 @@
+body {
+  background-color: whitesmoke;
+  color: black;
+  height: calc(100vh - 1px);
+  margin: 1rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.todo-wrapper {
+  background-color: white;
+  padding: 2%;
+  margin-right: auto;
+  margin-left: auto;
+  overflow-y: auto;
+  margin-top: 3rem;
+  width: fit-content;
+  box-shadow: 2px 5px 5px black;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 0.25rem;
+  background-color: whitesmoke;
+  border-width: 1px;
+}
+
+input:focus {
+  background-color: white;
+}
+
+.todo-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+.add-button,
+.secondary-button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgb(48, 45, 45);
+  color: white;
+  border-radius: 0.25rem;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.add-button:hover {
+  background-color: rgb(85, 82, 82);
+}
+
+.todo-decision-button {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.secondary-button {
+  width: 5.25rem;
+}
+
+.active {
+  background-color: green;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.display {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+img {
+  width: 40px;
+  height: 40px;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-list-item,
+.edit-container {
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0px 10px 0px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 1rem;
+  justify-content: space-between;
+}
+
+.edit-container {
+  padding: 2rem;
+}
+
+.edit-container input {
+  width: 300px;
+  margin-bottom: 1rem;
+  background-color: white;
+}
+
+.edit-container textarea {
+  width: 500px;
+  border-radius: 0.25rem;
+}
+
+.update-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.description {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.icon {
+  width: 30px;
+  height: 50px;
+  cursor: pointer;
+}
+.description-text {
+  font-size: 1rem;
+}
+
+.description-date {
+  font-size: 12px;
+}
+
+h3, h4 {
+  color: green;
+  cursor: pointer;
+}
+
+.delete {
+  color: red;
+}
+
+.edit {
+  color: blue;
+}
+
+
