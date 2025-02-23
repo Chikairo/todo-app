@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import './todo.css';
-
+import { useLocation } from "react-router-dom";
+import "./todo.css";
 
 function Todo() {
   const [isCompleteScreen, setIsCompleteScreen] = useState(false);
@@ -14,7 +14,7 @@ function Todo() {
   const [editedItem, setEditedItem] = useState([]);
 
   const handleAddTodo = () => {
-    let newTodoItem  = {
+    let newTodoItem = {
       title: newTitle,
       description: newDescription,
       date: newDate,
@@ -101,23 +101,32 @@ function Todo() {
   };
 
   const switchTheme = (e) => {
-    if(e.target.checked) {
-      document.querySelector('body').setAttribute('dark-theme', 'dark')
+    if (e.target.checked) {
+      document.querySelector("body").setAttribute("dark-theme", "dark");
     } else {
-      document.querySelector('body').setAttribute('dark-theme', 'light')
+      document.querySelector("body").setAttribute("dark-theme", "light");
     }
-  }
+  };
 
-  
+  const location = useLocation();
+  const { name } = location.state || { name: "Guest" };
+  const [showWelcome, setShowWelcome] = useState(true);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setShowWelcome(false);
+    }, 3000);
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   return (
     <div className="Todo">
       <div className="page-header">
-        <h1>Welcome Kairo!</h1>
+        <h1>{showWelcome ? `Welcome, ${name}!` : ""}</h1>
         <div className="display">
-          <h1>Kairo</h1>
+          <h1>{name}</h1>
           <label class="switch">
-            <input type="checkbox" onChange={switchTheme}/>
+            <input type="checkbox" onChange={switchTheme} />
             <span class="slider round"></span>
           </label>
         </div>
@@ -200,10 +209,9 @@ function Todo() {
                         onChange={(e) => updateDescription(e.target.value)}
                         value={editedItem.description}
                       />
-                      <h4
-                        className="update"
-                        onClick={updateEditedTodo}
-                      >Update</h4>
+                      <h4 className="update" onClick={updateEditedTodo}>
+                        Update
+                      </h4>
                     </div>
                   </div>
                 );
@@ -217,18 +225,18 @@ function Todo() {
                         <p className="description-date">{item.date}</p>
                       </div>
                       <div className="icons">
-                        <h4
-                          className="edit"
-                          onClick={() => editTodo(index)}
-                        >edit</h4>
+                        <h4 className="edit" onClick={() => editTodo(index)}>
+                          edit
+                        </h4>
                         <h4
                           className="delete"
                           onClick={() => deleteTodo(index)}
-                        >delete</h4>
-                        <h4
-                          class="done"
-                          onClick={() => handleComplete(index)}
-                        >done</h4>
+                        >
+                          delete
+                        </h4>
+                        <h4 class="done" onClick={() => handleComplete(index)}>
+                          done
+                        </h4>
                       </div>
                     </div>
                   </div>
@@ -253,7 +261,9 @@ function Todo() {
                       <h4
                         className="delete"
                         onClick={() => deleteCompletedTodo(index)}
-                      >delete</h4>
+                      >
+                        delete
+                      </h4>
                     </div>
                   </div>
                 </div>

@@ -6,12 +6,12 @@ body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-[dark-theme='dark'] {
+[dark-theme="dark"] {
   background-color: rgb(39, 36, 36);
   color: whitesmoke;
 }
 
-[dark-theme='light'] {
+[dark-theme="light"] {
   background-color: whitesmoke;
   color: black;
 }
@@ -203,7 +203,6 @@ h4:hover {
   height: 0;
 }
 
-
 .slider {
   position: absolute;
   cursor: pointer;
@@ -248,4 +247,67 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+@media (max-width: 700px) {
+  .page-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .display {
+    justify-content: space-between;
+    gap: 15rem;
+  }
+
+  .todo-wrapper {
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .todo-input {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .todo-list-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+    width: 300px;
+  }
+
+  .todo-list {
+    width: 300px;
+  }
+
+  h4 {
+    font-size: 14px;
+  }
+
+  .icons {
+    gap: 8px;
+  }
+
+  .edit-container input {
+    width: 200px;
+  }
+
+  .update-description {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .update-description textarea {
+    width: 250px;
+  }
 }

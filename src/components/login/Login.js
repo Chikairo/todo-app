@@ -1,6 +1,6 @@
 import "./login.css";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
   const initialValues = { username: "", email: "", password: "" };
@@ -13,17 +13,18 @@ const Login = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormErrors(validate(formValues));
+    const errors = validate(formValues);
+    setFormErrors(errors);
     setIsSubmit(true);
-  };
 
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(formValues);
+    if (Object.keys(errors).length === 0 && isSubmit) {
+      navigate("/todo", { state: { name: formValues.username } });
     }
-  }, [formErrors]);
+  };
 
   const validate = (values) => {
     const errors = {};
@@ -49,12 +50,12 @@ const Login = () => {
   return (
     <div className="addUser">
       <h3>Sign in</h3>
-      <form className="addUserForm">
+      <form className="addUserForm" onSubmit={handleSubmit}>
         <div className="inputGroup">
-        <div className="field">
+          <div className="field">
             <label htmlFor="email">Email:</label>
             <input
-              type="email"
+              type="text"
               id="email"
               name="email"
               autoComplete="off"
@@ -65,7 +66,7 @@ const Login = () => {
             <p>{formErrors.email}</p>
           </div>
 
-           <div className="field">
+          <div className="field">
             <label htmlFor="Password">Password:</label>
             <input
               type="password"
@@ -79,11 +80,9 @@ const Login = () => {
             <p>{formErrors.password}</p>
           </div>
 
-          <Link to="/todo">
-            <button type="submit" className="btn btn-primary" onChange={handleSubmit}>
-              Login
-            </button>
-          </Link>
+          <button type="submit" className="btn btn-primary">
+            Login
+          </button>
         </div>
       </form>
       <div className="login">

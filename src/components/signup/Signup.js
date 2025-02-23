@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./signup.css";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Signup = () => {
   const initialValues = { username: "", email: "", password: "" };
@@ -13,17 +13,18 @@ const Signup = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormErrors(validate(formValues));
+    const errors = validate(formValues);
+    setFormErrors(errors);
     setIsSubmit(true);
-  };
 
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(formValues);
+    if (Object.keys(errors).length === 0 && isSubmit) {
+      navigate("/todo", { state: { name: formValues.username } } );
     }
-  }, [formErrors]);
+  };
 
   const validate = (values) => {
     const errors = {};
@@ -49,7 +50,7 @@ const Signup = () => {
   return (
     <div className="addUser">
       <h3>Sign Up</h3>
-      <form className="addUserForm" >
+      <form className="addUserForm" onSubmit={handleSubmit}>
         <div className="inputGroup">
           <div className="field">
             <label htmlFor="name">Name:</label>
@@ -68,7 +69,7 @@ const Signup = () => {
           <div className="field">
             <label htmlFor="email">Email:</label>
             <input
-              type="email"
+              type="text"
               id="email"
               name="email"
               autoComplete="off"
@@ -92,12 +93,10 @@ const Signup = () => {
             />
             <p>{formErrors.password}</p>
           </div>
-          
-          <Link to="/todo">
-            <button type="submit" className="btn btn-success" onChange={handleSubmit}>
-              Sign Up
-            </button>
-          </Link>
+
+          <button type="submit" className="btn btn-success">
+            Sign Up
+          </button>
         </div>
       </form>
       <div className="login">
