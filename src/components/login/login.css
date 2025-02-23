@@ -18,6 +18,7 @@ body {
 
 .addUserForm .inputGroup label {
   margin-top: 10px;
+  color: black;
 }
 
 .addUserForm .inputGroup input {
